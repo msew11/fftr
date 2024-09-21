@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="1b47712a-719b-4ba0-82e3-ad118afaab86" Name="- 我写得" Enabled="true">
+  <ExportedFolder Id="1b47712a-719b-4ba0-82e3-ad118afaab86" Name="root" Enabled="true">
     <Folders>
       <Folder Id="3a2f3209-1d88-43db-89df-59e6d79b54bb" Name="武僧check" Enabled="true">
         <Folders>
