@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="1b47712a-719b-4ba0-82e3-ad118afaab86" Name="- 我写得" Enabled="true">
+    <Folders>
+      <Folder Id="3a2f3209-1d88-43db-89df-59e6d79b54bb" Name="武僧check" Enabled="true">
+        <Folders>
+          <Folder Id="d92e600f-61b2-4cd0-85e1-6f0f0a29916e" Name="红莲" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="1红莲开启" Id="b4244440-2651-4b7e-a8c7-d49f417ff0b1" RegularExpression="^\[(?&lt;t1&gt;.{2}?):(?&lt;t2&gt;.{2}?):(?&lt;t3&gt;.{2}?)\.(?&lt;t4&gt;.{3}?)\] StatusAdd 1A:49D:红莲极意">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="in_rid" VariableExpression="1" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetString" VariableName="rof_startTime" VariableExpression="${t1}${t2}${t3}${t4}" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" UseTTSTextExpression="红莲开启" Enabled="False" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="2红莲结束" Id="5cd5a9ce-b1cc-4cb3-a67d-3e7e06eefc99" RegularExpression="^\[(?&lt;t1&gt;.{2}?):(?&lt;t2&gt;.{2}?):(?&lt;t3&gt;.{2}?)\.(?&lt;t4&gt;.{3}?)\] StatusRemove 1E:49D:红莲极意">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="in_rid" VariableExpression="0" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetString" VariableName="rof_endTime" VariableExpression="${t1}${t2}${t3}${t4}" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="3" UseTTSTextExpression="红莲结束" Enabled="False" ActionType="UseTTS">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+            </Triggers>
+          </Folder>
+          <Folder Id="9e25ff0f-9add-4597-ad59-25206251631e" Name="功力" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="1功力上" Id="ca17cfd0-4d93-45b8-a908-7d70e4fe7734" RegularExpression="^\[(?&lt;t1&gt;.{2}?):(?&lt;t2&gt;.{2}?):(?&lt;t3&gt;.{2}?)\.(?&lt;t4&gt;.{3}?)\] StatusAdd 1A:BB9:功力">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="in_rf" VariableExpression="1" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="2功力下" Id="79328fa8-d35f-4396-88b2-e713f20cda57" RegularExpression="^\[(?&lt;t1&gt;.{2}?):(?&lt;t2&gt;.{2}?):(?&lt;t3&gt;.{2}?)\.(?&lt;t4&gt;.{3}?)\] StatusRemove 1E:BB9:功力">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="in_rf" VariableExpression="-1" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers>
+          <Trigger Enabled="true" Name="战技in功力check" Id="d1f6f129-4b71-4fda-bedc-bf93ab787c0f" RegularExpression="^\[(?&lt;t1&gt;.{2}?):(?&lt;t2&gt;.{2}?):(?&lt;t3&gt;.{2}?)\.(?&lt;t4&gt;.{3}?)\] ActionEffect 15:101A5F56:.*(梦幻斗舞|苍气炮|凤凰舞|连击|双掌打|破碎拳|双龙脚|正拳|崩拳)">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="断功力哥们" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:in_rf}" ExpressionTypeL="Numeric" ExpressionR="-1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="必杀in红莲check" Id="13607a59-be83-4f89-a5ad-f85922643005" RegularExpression="^\[(?&lt;t1&gt;.{2}?):(?&lt;t2&gt;.{2}?):(?&lt;t3&gt;.{2}?)\.(?&lt;t4&gt;.{3}?)\] ActionEffect 15:101A5F56:.*(梦幻斗舞|苍气炮|凤凰舞)">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="skill_time" VariableExpression="${t1}${t2}${t3}${t4}" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" UseTTSTextExpression="必杀没进红莲" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:in_rid}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers>
+      <Trigger Enabled="true" Name="挖宝挂件自爆" Id="81154e26-5ed1-457d-a4a0-207d9ae646e8" RegularExpression="^.{14} ChatLog 00:0839::“(水城宝物库|运河宝物库|运河宝物库神殿|梦羽宝境|梦羽宝殿|惊奇百宝城|厄尔庇斯育体宝殿)”任务开始。">
+        <Actions>
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:${var:_pnzport}/command" JsonPayloadExpression="/e 自爆 自爆&lt;se.1&gt;&lt;se.1&gt;&lt;se.1&gt;" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:${var:_pnzport}/command" JsonPayloadExpression="/blueaction 自爆" ActionType="GenericJson" ExecutionDelayExpression="1000">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="3" JsonEndpointExpression="http://127.0.0.1:${var:_pnzport}/command" JsonPayloadExpression="/blueaction 自爆" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="4" JsonEndpointExpression="http://127.0.0.1:${var:_pnzport}/command" JsonPayloadExpression="/blueaction 自爆" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="5" JsonEndpointExpression="http://127.0.0.1:${var:_pnzport}/command" JsonPayloadExpression="/blueaction 自爆" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="_设置鲶鱼精端口" Id="e8643c72-89af-4bbf-ae2c-2038f174aa72" RegularExpression="^.{14} 264.*" Description="该正则会定时触发">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="_pnzport" VariableExpression="12019" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:12019/command" JsonPayloadExpression="/e 设置鲶鱼精端口：${var:_pnzport}" LogMessageText="设置鲶鱼精端口：${var:_pnzport}" LogLevel="Info" ActionType="LogMessage">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="3" UseTTSTextExpression="设置鲶鱼精端口：${var:_pnzport}" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="true" Grouping="And">
+          <ConditionSingle Enabled="true" ExpressionL="${var:_pnzport}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+        </Condition>
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
